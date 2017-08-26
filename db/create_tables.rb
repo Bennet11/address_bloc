@@ -2,7 +2,7 @@ require 'sqlite3'
 
 db = SQLite3::Database.new "db/address_bloc.sqlite"
 
-db.execute("DROP TABLE address_book;");
+db.execute("DROP TABLE IF EXISTS address_book;");
 db.execute("DROP TABLE entry;");
 
 db.execute <<-SQL
@@ -10,7 +10,7 @@ db.execute <<-SQL
     id INTEGER PRIMARY KEY,
     name VARCHAR(30)
   );
-  SQL
+SQL
 
 db.execute <<-SQL
   CREATE TABLE entry (
@@ -21,4 +21,4 @@ db.execute <<-SQL
     email VARCHAR(30),
     FOREIGN KEY (address_book_id) REFERENCES address_book(id)
   );
-  SQL
+SQL
