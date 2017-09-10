@@ -3,7 +3,7 @@ require "csv"
 require 'bloc_record/base'
 
 class AddressBook < BlocRecord::Base
-
+  has_many :entries
 
   def add_entry(name, phone_number, email)
     Entry.create(name: name, phone_number: phone, email: email)
