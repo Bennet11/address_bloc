@@ -5,6 +5,10 @@ require 'bloc_record/base'
 class AddressBook < BlocRecord::Base
   has_many :entries
 
+  def to_s
+    "Name: #{@name}\nPhone Number: #{@phone_number}\nEmail: #{@email}"
+  end
+  
   def add_entry(name, phone_number, email)
     Entry.create(name: name, phone_number: phone, email: email)
   end
